@@ -5,6 +5,7 @@ const ServicesPage = () => {
     <div>
       <h1>Services</h1>
       <h1>Sardor</h1>
+      <p>TEST</p>
     </div>
   )
 }
