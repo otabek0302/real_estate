@@ -2,7 +2,12 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle
+} from "@/components/ui/sheet"
 import { Menu, X } from "lucide-react"
 import { FaLeaf } from "react-icons/fa"
 
@@ -13,10 +18,13 @@ const Header = () => {
 
   return (
     <header className="relative z-50">
+      {/* Верхняя полоска */}
       <div className="bg-black text-white text-sm py-2 px-4 text-center">
         ✨Discover Your Dream Property with Estatein{" "}
         <a href="#" className="underline">Learn More</a>
       </div>
+
+      {/* Основная панель */}
       <div className="bg-[#161616] flex items-center justify-between px-4 py-4 md:px-10">
         {/* Логотип */}
         <div className="flex items-center gap-2">
@@ -39,12 +47,12 @@ const Header = () => {
 
         {/* Кнопка Contact Us */}
         <div className="hidden md:block">
-          <Button variant="outline" className="text-white border-white">
+          <Button variant="outline" className="text-black border-white">
             Contact Us
           </Button>
         </div>
 
-        {/* Меню для мобильных */}
+        {/* Мобильное меню */}
         <div className="md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -53,12 +61,16 @@ const Header = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-[#161616] text-white">
+              {/* Добавлен заголовок для доступности */}
+              <SheetTitle className="sr-only">Main Menu</SheetTitle>
+
               <div className="flex justify-between items-center mb-6">
                 <span className="text-lg font-semibold">Menu</span>
                 <Button variant="ghost" size="icon" onClick={() => setOpen(false)}>
                   <X className="text-white" />
                 </Button>
               </div>
+
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <a
