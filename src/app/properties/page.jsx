@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
+import Sections from "./sections";
 
-const PropertiesPage = () => {
+
+
+const Page = () => {
   return (
-    <div>
-      <h1>Properties</h1>
-      <h1>Akhmad</h1>
-    </div>
-  )
-}
+    <main>
+      <Sections/>
+    </main>
+  );
+};
 
-export default PropertiesPage
+export default Page;
