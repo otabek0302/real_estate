@@ -1,11 +1,11 @@
 import React from 'react'
+import All from './section/All';
 
 const AboutUsPage = () => {
     return (
-        <div>
-            <h1>About Us</h1>
-            <h1>Marjona</h1>
-        </div>
+        < >
+        <All />
+        </ >
     )
 }
 
