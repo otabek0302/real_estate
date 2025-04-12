@@ -55,3 +55,6 @@ export const properties = [
     price: "$1,200,000"
   }
 ];
+export const FeaturedHomes = [
+    
+]
