@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import symbol from "@/app/home/image/Symbol.png";
@@ -9,8 +10,44 @@ import {
   Youtube,
   SendHorizonal,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
+  const router = useRouter();
+
+  const handleExploreClick = () => {
+    router.push("/properties");
+  };
+
+  const navigationSections = [
+    {
+      title: "Home",
+      links: ["Hero Section", "Features", "Properties", "Testimonials", "FAQ’s"],
+    },
+    {
+      title: "About Us",
+      links: ["Our Story", "Our Works", "How It Works", "Our Team", "Our Clients"],
+    },
+    {
+      title: "Properties",
+      links: ["Portfolio", "Categories"],
+    },
+    {
+      title: "Services",
+      links: [
+        "Valuation Mastery",
+        "Strategic Marketing",
+        "Negotiation Wizardry",
+        "Closing Success",
+        "Property Management",
+      ],
+    },
+    {
+      title: "Contact Us",
+      links: ["Contact Form", "Our Offices"],
+    },
+  ];
+
   return (
     <footer className="bg-black text-white">
       {/* CTA Section */}
@@ -24,10 +61,13 @@ export default function Footer() {
               Start Your Real Estate Journey Today
             </h2>
             <p className="text-gray-400 text-base md:text-lg">
-              Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.
+              Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way.
             </p>
           </div>
-          <Button className="bg-[#7B61FF] text-white px-8 py-3 rounded-full text-base font-semibold">
+          <Button
+            onClick={handleExploreClick}
+            className="bg-[#7B61FF] text-white px-8 py-3 rounded-full text-base font-semibold"
+          >
             Explore Properties
           </Button>
         </div>
@@ -55,39 +95,19 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-sm">
-            {[
-              {
-                title: "Home",
-                links: ["Hero Section", "Features", "Properties", "Testimonials", "FAQ’s"],
-              },
-              {
-                title: "About Us",
-                links: ["Our Story", "Our Works", "How It Works", "Our Team", "Our Clients"],
-              },
-              {
-                title: "Properties",
-                links: ["Portfolio", "Categories"],
-              },
-              {
-                title: "Services",
-                links: [
-                  "Valuation Mastery",
-                  "Strategic Marketing",
-                  "Negotiation Wizardry",
-                  "Closing Success",
-                  "Property Management",
-                ],
-              },
-              {
-                title: "Contact Us",
-                links: ["Contact Form", "Our Offices"],
-              },
-            ].map((section, i) => (
+            {navigationSections.map((section, i) => (
               <div key={i}>
                 <h4 className="font-semibold mb-4 text-gray-400">{section.title}</h4>
                 <ul className="space-y-2">
                   {section.links.map((link, j) => (
-                    <li key={j}>{link}</li>
+                    <li key={j}>
+                      <Link
+                        href={`/${link.toLowerCase().replace(/\s+/g, "-")}`} // Преобразуем ссылку в формат URL
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        {link}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>
